@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ISI Syllabus Checklist</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2f6f5e">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--tx:#1d1d1b;--mu:#6b6a64;--bd:#e3e1d9;--ac:#2f6f5e;--ac2:#dcece6;--wa:#b26a00;--bl:#2b5fa8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151614;--card:#1e201d;--tx:#ecebe6;--mu:#9a988f;--bd:#32342f;--ac:#5fb59d;--ac2:#25362f;--wa:#e0a24a;--bl:#7aa7e6}}
+:root[data-theme="dark"]{--bg:#151614;--card:#1e201d;--tx:#ecebe6;--mu:#9a988f;--bd:#32342f;--ac:#5fb59d;--ac2:#25362f;--wa:#e0a24a;--bl:#7aa7e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:0 14px 40px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:14px 0 10px;z-index:5;border-bottom:1px solid var(--bd)}
+h1{font-size:18px;margin:0 0 8px}
+.top{display:flex;align-items:baseline;gap:10px}
+.pct{font-size:30px;font-weight:700;color:var(--ac)}
+.sub{color:var(--mu);font-size:13px}
+.bar{display:block;height:6px;background:var(--bd);border-radius:4px;overflow:hidden;margin-top:6px}
+.bar b{display:block;height:100%;width:0;background:var(--ac);transition:width .25s}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:16px;padding:5px 11px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+details.sec{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin:10px 0;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+.st{font-weight:600;flex:1 1 60%}
+.tier{font-size:11px;color:var(--mu);border:1px solid var(--bd);border-radius:10px;padding:1px 7px}
+.cnt{font-size:13px;color:var(--mu);min-width:44px;text-align:right}
+summary .bar{flex:1 1 100%;margin:0}
+.body{padding:0 14px 10px}
+h3{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mu);margin:12px 0 4px;display:flex;gap:8px;align-items:center}
+.it{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer;border-top:1px solid var(--bd)}
+.it input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--ac);flex:none}
+.it.done .tx{text-decoration:line-through;color:var(--mu)}
+.it.opt .tx{color:var(--mu)}
+.tx{flex:1}
+.p{font-style:normal;font-size:10px;border-radius:8px;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
+.pO{color:var(--ac)}.pE{color:var(--bl)}.pP{color:var(--mu)}.pN{color:var(--wa)}
+.hd .it.done{display:none}
+.foot{color:var(--mu);font-size:12px;margin-top:18px}
+.foot button{margin-top:10px}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>ISI B.Stat / B.Math Syllabus Checklist</h1>
+<div class="top"><span class="pct" id="pct">0%</span><span class="sub" id="sum"></span></div>
+<span class="bar"><b id="obar"></b></span>
+<div class="chips" id="chips"></div>
+</header>
+<div id="list"></div>
+<p class="foot">Official = from the ISI list I checked (previous year's; verify against the current prospectus). Extended, Optional, tiers and New (gaps I added) are judgment calls, not verified against past papers. Progress % counts core items only; Optional items are excluded. Your ticks are stored only on this device, in this browser or app.</p>
+<button class="chip" id="reset">Reset progress</button> <button class="chip" id="bk">Backup (copy)</button> <button class="chip" id="rs2">Restore</button>
+</main>
+<script>
+const RAW=`
+# 0|Foundations (1-week check)|T3
+## Number systems|
+- Natural, whole, integer, rational, irrational, real numbers
+- Absolute value, number line, intervals
+- Powers, exponents, radicals
+- Fractions, decimals, scientific notation
+## Sets|O
+- Notation, subsets, power sets
+- Union, intersection, difference, complement
+- Cartesian products, Venn diagrams
+## Logic|
+- Propositions, negation, AND/OR
+- Implication, converse, contrapositive, biconditional
+- Necessary and sufficient conditions
+- Quantifiers and their negations
+# P|Proof techniques & induction|T1
+## Proof methods|
+- Direct proof
+- Contradiction and contrapositive
+- Proof by cases
+- Counterexamples
+- Constructive proofs
+- If-and-only-if proofs
+- Mathematical induction (incl. strong induction)
+# 1|Algebra|T1
+## Basic algebra|O
+- Identities and factorisation
+- Polynomials, division, remainder and factor theorems
+- Roots and coefficients, Vieta, rational roots
+- Logarithms: definition, laws, equations, inequalities [N]
+## Equations & inequalities|O
+- Linear, quadratic, higher-degree, simultaneous equations
+- Quadratic, polynomial, rational inequalities
+- Absolute-value equations and inequalities
+- Parameter-based equations
+## Functions|O
+- Domain, range, graphs
+- Injective, surjective, bijective
+- Composition and inverse
+- Even/odd, monotonicity, piecewise
+- Functional equations [E]
+## Sequences & series|O
+- AP, GP, HP
+- Recurrence relations
+- Sigma notation, telescoping sums
+- Arithmetic and geometric sums, infinite GP
+- Bounded and monotone sequences [N]
+- Limit of a sequence: squeeze, monotone convergence [N]
+# 2|Number theory|T1
+## Divisibility|O
+- Divisibility, division algorithm
+- GCD, LCM, Euclidean algorithm
+- Bezout identity
+## Primes|O
+- Prime/composite, factorisation
+- Fundamental theorem of arithmetic
+- Infinitude of primes
+## Modular arithmetic|E
+- Congruences, residue classes
+- Linear congruences
+- Powers modulo n
+- Fermat's little and Euler's theorem, phi function
+## Diophantine equations|E
+- Linear Diophantine equations
+- Divisibility-based equations, factoring tricks
+- Pythagorean triples
+- Basic quadratic cases
+## Further topics|P
+- Chinese remainder theorem
+- Multiplicative order
+- Quadratic residues
+- Valuations (Legendre's formula)
+- Infinite descent
+- Integer-valued polynomial arguments
+# 3|Combinatorics|T1
+## Counting|O
+- Addition and multiplication principles
+- Permutations, combinations, arrangements
+- Circular arrangements, repeated objects
+- Inclusion-exclusion
+## Binomial theorem|O
+- Expansion, general term, coefficients
+- Binomial identities
+- Multinomial ideas
+## Pigeonhole|E
+- Basic and generalised forms
+- Applications
+## Advanced counting|E
+- Stars and bars
+- Recurrence counting
+- Double counting
+- Invariants and extremal arguments
+- Generating functions [P]
+- Graph-based counting [P]
+# 4|Probability|T1
+## Basic probability|O
+- Sample spaces, events
+- Addition and multiplication rules
+- Complement
+## Conditional probability|E
+- Conditional probability and independence
+- Bayes' theorem, total probability
+## Random variables|P
+- Discrete random variables, distributions
+- Expectation, variance, standard deviation
+## Common distributions|P
+- Bernoulli, binomial, geometric, basic Poisson
+# 5|Euclidean geometry|T1
+## Basics|O
+- Lines, angles, triangles
+- Congruence, similarity, Pythagoras
+- Angle bisectors, medians, cevians
+- Areas and quadrilaterals
+## Circles|O
+- Chords, tangents, secants
+- Cyclic quadrilaterals
+- Power of a point
+## Classical results|E
+- Menelaus and Ceva
+- Stewart and Apollonius
+- Ptolemy
+- Locus problems, transformations
+## Mensuration|O
+- Areas and perimeters of plane figures [N]
+- Surface area and volume of solids [N]
+# 6|Coordinate geometry|T2
+## Lines|O
+- Cartesian coordinates, distance and section formulae
+- Slope, straight lines, pair of lines
+- Point-to-line distance, angle between lines
+- Area of a triangle
+- Polar coordinates [N]
+- Locus
+## Conics|O
+- Circle
+- Parabola
+- Ellipse
+- Hyperbola
+- Tangents and normals
+- General conics, parametric coordinates [E]
+# 7|Trigonometry|T2
+## Core|O
+- Angles, radians, ratios
+- Fundamental identities
+- Compound, multiple and submultiple angles
+- Transformations
+- Trigonometric equations
+- Inverse trigonometric functions
+## Triangles|O
+- Sine and cosine rules
+- Triangle identities, area
+- Heights and distances
+- Trigonometric inequalities [E]
+# 8|Calculus|T2
+## Limits & continuity|O
+- Concept of limit, algebraic and standard limits
+- One-sided and infinite limits
+- Continuity
+## Differentiation|O
+- First principles, standard derivatives
+- Product, quotient, chain rules
+- Implicit and parametric differentiation
+- Higher derivatives
+## Applications of derivatives|O
+- Increasing/decreasing functions
+- Maxima and minima
+- Slope, tangents and normals
+- Curve sketching [N]
+- Rate of change
+- Rolle and Mean Value Theorem [E]
+- Inequalities using derivatives [E]
+- Cauchy's Mean Value Theorem [P]
+## Integration|O
+- Substitution
+- By parts
+- Partial fractions
+- Definite integrals, fundamental theorem
+## Applications of integration|O
+- Area under and between curves
+- Homogeneous first-order, first-degree differential equations [N]
+# 9|Complex numbers|T2
+## Complex numbers|O
+- Algebra, conjugate, modulus, argument
+- Argand plane, polar form
+- De Moivre's theorem
+- Roots of complex numbers
+- Geometric interpretation
+- Complex-number inequalities and problems [E]
+# 10|Matrices & determinants|T2
+## Matrices|O
+- Matrices and operations
+- Determinants and properties
+- Inverse of a matrix
+- Systems of linear equations
+## Extras|P
+- Rank, linear dependence
+- Basic eigenvalue ideas
+# 11|Vectors & 3D (unconfirmed)|P
+## Vectors|P
+- Vector algebra, dot and cross product
+- Projection, angle between vectors
+- Lines, planes, basic 3D geometry
+# 12|Inequalities|T1
+## Inequalities|O
+- AM-GM
+- HM and the AM-GM-HM chain [N]
+- Cauchy-Schwarz
+- Triangle inequality
+- Rearrangement-type ideas [E]
+- Absolute-value and function inequalities
+- Equality conditions, bounding
+# 13|Problem-solving techniques|T1
+## Techniques|
+- Pattern recognition, casework, WLOG
+- Bounding, extremal principle
+- Pigeonhole, invariants, monovariants
+- Symmetry, substitution, clever factorisation
+- Double counting, construction
+- Recursion, induction
+- Combining multiple topics
+`;
+const TN={T1:'Core',T2:'Important',T3:'Quick check',P:'Optional'},PN={O:'Official',E:'Extended',P:'Optional',N:'New'};
+const secs=[];let cur,sub;
+RAW.trim().split('\n').forEach(l=>{l=l.trim();if(!l)return;
+if(l.startsWith('##')){const a=l.slice(2).trim().split('|');sub={t:a[0],g:a[1]||'',items:[]};cur.subs.push(sub)}
+else if(l[0]==='#'){const a=l.slice(1).trim().split('|');cur={id:a[0],t:a[1],tier:a[2],subs:[]};secs.push(cur)}
+else if(l[0]==='-'){let t=l.slice(1).trim(),k='';const m=t.match(/\s\[(N|P|E)\]$/);if(m){k=m[1];t=t.slice(0,m.index)}sub.items.push({t,k})}});
+const KEY='isi-todo-v1';let done=new Set();
+try{const s=localStorage.getItem(KEY);if(s)done=new Set(JSON.parse(s))}catch(e){}
+const $=id=>document.getElementById(id);
+$('list').innerHTML=secs.map(s=>`<details class="sec" data-t="${s.tier}"><summary><span class="st">${s.t}</span><span class="tier">${TN[s.tier]}</span><span class="cnt" id="c${s.id}"></span><i class="bar"><b id="b${s.id}"></b></i></summary><div class="body">`+
+s.subs.map((u,si)=>`<h3>${u.t}${u.g?`<em class="p p${u.g}">${PN[u.g]}</em>`:''}</h3>`+u.items.map((it,ii)=>{const id=s.id+'.'+si+'.'+ii,o=u.g==='P'||it.k==='P';
+return `<label class="it${o?' opt':''}" data-o="${o?1:0}"><input type="checkbox" data-id="${id}"><span class="tx">${it.t}</span>${it.k?`<em class="p p${it.k}">${PN[it.k]}</em>`:''}</label>`}).join('')).join('')+`</div></details>`).join('');
+function sync(){document.querySelectorAll('.it input').forEach(c=>{c.checked=done.has(c.dataset.id);c.parentNode.classList.toggle('done',c.checked)});update()}
+function update(){let T=0,D=0;secs.forEach(s=>{let t=0,d=0,ot=0,od=0;document.querySelectorAll(`#list details:nth-of-type(${secs.indexOf(s)+1}) .it`).forEach(l=>{const c=l.firstChild.checked;if(l.dataset.o==='1'){ot++;if(c)od++}else{t++;if(c)d++}});
+T+=t;D+=d;$('c'+s.id).textContent=t?d+'/'+t:od+'/'+ot;$('b'+s.id).style.width=(t?d/t:ot?od/ot:0)*100+'%'});
+const p=T?Math.round(D/T*100):0;$('pct').textContent=p+'%';$('sum').textContent=D+' of '+T+' core topics done';$('obar').style.width=p+'%'}
+function save(){try{localStorage.setItem(KEY,JSON.stringify([...done]))}catch(e){}}
+$('list').addEventListener('change',e=>{const c=e.target;if(!c.dataset.id)return;c.checked?done.add(c.dataset.id):done.delete(c.dataset.id);c.parentNode.classList.toggle('done',c.checked);update();save()});
+let f='all';const F=[['all','All'],['T1','Core'],['T2','Important'],['T3','Quick check'],['P','Optional']];
+$('chips').innerHTML=F.map(x=>`<button class="chip${x[0]==='all'?' on':''}" data-f="${x[0]}">${x[1]}</button>`).join('')+'<button class="chip" id="hd">Hide done</button><button class="chip" id="ex">Expand all</button>';
+const vis=()=>[...document.querySelectorAll('details.sec')].filter(d=>!d.hidden);
+function exLabel(){$('ex').textContent=vis().every(d=>d.open)?'Collapse all':'Expand all'}
+$('list').addEventListener('toggle',exLabel,true);
+$('chips').addEventListener('click',e=>{const b=e.target;if(b.id==='ex'){const open=!vis().every(d=>d.open);vis().forEach(d=>d.open=open);exLabel();return}
+if(b.id==='hd'){b.classList.toggle('on');document.body.classList.toggle('hd');return}
+if(!b.dataset.f)return;f=b.dataset.f;document.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x===b));
+document.querySelectorAll('details.sec').forEach(d=>d.hidden=!(f==='all'||d.dataset.t===f));exLabel()});
+let rs=0;$('reset').addEventListener('click',e=>{if(!rs){rs=1;e.target.textContent='Tap again to confirm reset';setTimeout(()=>{rs=0;e.target.textContent='Reset progress'},3000);return}
+done=new Set();rs=0;e.target.textContent='Reset progress';sync();save()});
+sync();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+$('bk').onclick=async e=>{const s=JSON.stringify([...done]);try{await navigator.clipboard.writeText(s);e.target.textContent='Copied. Paste it somewhere safe'}catch(x){prompt('Copy your backup:',s)}setTimeout(()=>e.target.textContent='Backup (copy)',3000)};
+$('rs2').onclick=()=>{const s=prompt('Paste backup code');if(!s)return;try{const a=JSON.parse(s);if(Array.isArray(a)){done=new Set(a);sync();save()}}catch(x){}};
+</script>
+</body>
+</html>
